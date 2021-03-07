@@ -18,6 +18,9 @@ namespace BotTelegramGame
 
 
             int max = 5;
+            string initialMessage = "Я загадываю число. Потом мы по очереди отнимаем от него " +
+                "число от 1 до 5. Побеждает тот, кто смог сделать последний ход\n" +
+                "restart если число не нравится\n";
             Random rand = new Random();
             Dictionary<long, int> db = new Dictionary<long, int>();
 
@@ -51,7 +54,7 @@ namespace BotTelegramGame
                       db[chatId] = startGame;
                       if (!Directory.Exists(path)) Directory.CreateDirectory(path);
                       skip = true;
-                      replyMsg = $"Загадано число: {db[chatId]}";
+                      replyMsg = initialMessage + $"Загадано число: {db[chatId]}";
                   }
                 else
                 {
@@ -70,7 +73,7 @@ namespace BotTelegramGame
                         replyMsg = $"Ход {firstName}: {user}. Число: {db[chatId]}";
                         if (db[chatId] <= 0)
                         {
-                            replyMsg = $"Ура! Победа, {firstName}!";
+                            replyMsg = $"Ура! Победа, {firstName}!"+"\nstart для новой игры";
                             skip = true;
                         }
                     }
@@ -86,8 +89,8 @@ namespace BotTelegramGame
                     if (db[chatId] <= 0) replyMsg = $"Ура! Победа БОТА!";
                 }
 
-                Bitmap image = new Bitmap(400, 400);
-                Graphics graphics = Graphics.FromImage(image);
+                //Bitmap image = new Bitmap(400, 400);
+                //Graphics graphics = Graphics.FromImage(image);
 
 
                  /*graphics.DrawImage(
@@ -95,7 +98,7 @@ namespace BotTelegramGame
                      x: 100,
                      y: 10);*/
 
-                graphics.DrawString(
+               /* graphics.DrawString(
                     s: replyMsg,
                     font: new Font("Consolas", 16),
                     brush: Brushes.Blue,
@@ -103,25 +106,25 @@ namespace BotTelegramGame
                     y: 200);
 
                 path += $@"\file_{DateTime.Now.Ticks}.bmp";
-                image.Save(path);
+                image.Save(path);*/
 
                  Console.WriteLine($" >>> {replyMsg}");
-                bot.SendPhotoAsync(
+                /*bot.SendPhotoAsync(
                     chatId: chatId,
-                    caption: "https://t.me/joinchat/UrUycVAA3BCDlfTWTh2x2w",
+                    //caption: "https://t.me/joinchat/UrUycVAA3BCDlfTWTh2x2w",
 
                     photo: new InputOnlineFile(new FileStream(path, FileMode.Open)),
 
                     replyToMessageId: msgId
-                    );
+                    );*/
 
 
 
-                 //bot.SendTextMessageAsync(
-                 //    chatId: chatId,
-                 //    text: replyMsg,
-                 //    replyToMessageId: msgId
-                 //    );
+                 bot.SendTextMessageAsync(
+                     chatId: chatId,
+                     text: replyMsg,
+                     replyToMessageId: msgId
+                     );
 
              };
 
