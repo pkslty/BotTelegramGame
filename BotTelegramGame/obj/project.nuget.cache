@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "xn7G0iDiUzn2ydVw9EWs9q+khoEFiiIU3lTaVLS1kO54tnzUafqAQVLMv7mrQHK5dGJvCxzlA5nrmN7kMNx6mQ==",
+  "success": true,
+  "projectFilePath": "/Users/denizka/Projects/BotTelegramGame/BotTelegramGame/BotTelegramGame.csproj",
+  "expectedPackageFiles": [
+    "/Users/denizka/.nuget/packages/newtonsoft.json/11.0.2/newtonsoft.json.11.0.2.nupkg.sha512",
+    "/Users/denizka/.nuget/packages/system.net.requests/4.3.0/system.net.requests.4.3.0.nupkg.sha512",
+    "/Users/denizka/.nuget/packages/telegram.bot/15.7.1/telegram.bot.15.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}
